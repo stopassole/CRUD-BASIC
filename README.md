@@ -22,6 +22,6 @@ Angular: Download Node.js, https://cli.angular.io/...
 
 Realize na sequência:
 
-Start back-end => ecxecute classe Main.java
+Start back-end => execute classe Main.java
 
 Start front-end => abra o prompt dentro da pasta do projeto ... execute 'npm install', execute 'ng-serve'
