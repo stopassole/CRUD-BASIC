@@ -1,0 +1,177 @@
+<div class="container-fluid" *ngIf="pesquisar">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row body">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div class="form-group search">
+                        <label>Pesquisar</label>
+                        <input type="text" class="form-control" title="Pesquisar" id="entrada" #entrada>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-0 col-lg-4 col-xl-4"></div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div class="form-group add-f">
+                        <button class="btn btn-sm btn-success btn-block add-f-b" title="Clique para cadastrar."
+                            (click)="adicionar()">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row body">
+                <div class="table-responsive"
+                    *ngIf="funcionarios && funcionarios.length; else nenhumFuncionarioEncontrado">
+                    <table class="table table-fixed">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Sobrenome</th>
+                                <th>E-mail</th>
+                                <th>NIS</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let funcionario of funcionarios" style="cursor: pointer"
+                                title="Clique para editar." (click)="editar(funcionario)">
+                                <td>{{funcionario.nome}}</td>
+                                <td>{{funcionario.sobrenome}}</td>
+                                <td>{{funcionario.email}}</td>
+                                <td>{{funcionario.nis}}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-danger btn-block" title="Clique para excluir."
+                                        (click)="$event.stopPropagation();excluirValidacao(funcionario.id)">
+                                        Excluir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                </div>
+
+                <span *ngIf="funcionarios.length !== 0">
+
+                    <p>
+                        <span class="badge" *ngIf="funcionarios.length">Registros: {{funcionarios.length}}</span>
+                    </p>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <ng-template class="justify" #nenhumFuncionarioEncontrado>
+        <p class="justify"> Não foi possível localizar nenhum registro.</p>
+    </ng-template>
+</div>
+
+<div class="container-fluid" *ngIf="!pesquisar">
+    <div class="panel panel-default">
+        <div class="panel-body body">
+            <form (ngSubmit)="salvar(formulario)" #formulario="ngForm">
+                <div class="modal-header">
+                    <label class="ml-4 mt-3">{{title}}</label>
+                </div>
+                <div class="row body2">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <div class="form-group search-form">
+                            <label>Nome * </label>
+                            <input type="text" [ngClass]="{'has-error': formulario.submitted && !nome.valid && error}"
+                                class="form-control" name="nome" [(ngModel)]="funcionario.nome" #nome="ngModel"
+                                minlength="2" maxlength="30" required>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <div class="form-group search-form">
+                            <label>Sobrenome *</label>
+                            <input type="text"
+                                [ngClass]="{'has-error': formulario.submitted && !sobrenome.valid && error}"
+                                class="form-control" name="sobrenome" [(ngModel)]="funcionario.sobrenome"
+                                #sobrenome="ngModel" minlength="2" maxlength="50" required>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <div class="form-group search-form">
+                            <label>E-mail * </label>
+                            <input type="email" [ngClass]="{'has-error': formulario.submitted && !email.valid && error}"
+                                class="form-control" name="email" [(ngModel)]="funcionario.email" #email="ngModel"
+                                pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                            <div class="message-email"
+                                *ngIf="email.errors && funcionario.email && funcionario.email.length">
+                                <label> Informe um e-mail válido. </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <div class="form-group search-form">
+                            <label>Número de Identificação Social (NIS) *</label>
+                            <input type="number" [ngClass]="{'has-error': formulario.submitted && !nis.valid && error}"
+                                class="form-control" name="nis" [(ngModel)]="funcionario.nis" #nis="ngModel" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row body2">
+                    <div class="col-xs-12 col-sm-12 col-md-0 col-lg-4 col-xl-4 mb-3"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
+                        <div class="form-group add-f-c">
+                            <button class="btn btn-sm btn-danger btn-block add-f-b " title="Clique para voltar."
+                                (click)="voltar()">Voltar</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
+                        <div class="form-group add-f-c">
+                            <button class="btn btn-sm btn-success btn-block add-f-b" title="Clique para salvar."
+                                type="submit">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="deletar" #deletar data-backdrop="static" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <label>Deletar</label>
+                <button type="button" class="close" data-dismiss="modal" #close2>&times;</button>
+            </div>
+
+            <div class="row">
+                <div class="modal-body modal-scroll">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <p align="center">
+                            <label> Atenção!</label>
+                        </p>
+
+                        <div class="alert alert-warning" role="alert">
+                            <p align="center">
+                                Deseja realmente excluir este registro ?
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="form-group">
+                        <button class="btn btn-sm btn-danger btn-block" data-dismiss="modal" type="button">Não</button>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="form-group">
+                        <button class="btn btn-sm btn-success btn-block" type="button" (click)="excluir()">Sim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="snackbar" #snackbar>{{mensagem}}</div>

@@ -1,0 +1,149 @@
+.body{
+    margin: 30px !important;
+    border-radius: 8px;
+    background-color:  #F8F8F8 !important;
+}
+
+@media(max-width: 768px){
+    .body{
+        margin: 10px !important;
+        border-radius: 8px;
+     }
+}
+
+.body2{
+    margin: 10px !important;
+    border-radius: 8px;
+    background-color:  #F8F8F8 !important;
+}
+
+.search{
+    margin-left: 30px;
+    margin: 30px;
+}
+
+@media(max-width: 768px){
+    .search{
+        margin-left: 10px;
+        margin: 20px;
+    }
+}
+
+.search-form{
+    margin-left: 30px;
+    margin: 20px;
+}
+
+
+@media(max-width: 768px){
+    .search-form{
+        margin-left: 10px;
+        margin: 20px;
+    }
+}
+
+.add-f{
+    margin-left: 30px;
+    margin: 30px; 
+    margin-top:62px;
+}
+
+@media(max-width: 768px){ 
+    .add-f{
+        margin-left: 30px;
+        margin: 30px; 
+        margin-top:32px;
+    }
+}
+
+.add-f-c{
+    margin-left: 20px;
+    margin: 20px; 
+    margin-top:52px;
+}
+
+@media(max-width: 768px){ 
+    .add-f-c{
+        margin-left: 20px;
+        margin: 20px; 
+        margin-top:32px;
+    }
+    
+}
+
+
+.add-f-b{
+    padding: 7px;
+}
+
+.table-responsive{
+    margin-left: 30px;
+    margin: 30px; 
+    max-height: 330px;
+    margin-bottom: 0px !important;
+}
+
+.badge{
+    margin-left: 30px; 
+    font-size: 15px;
+}
+
+.justify{
+    margin: 30px !important; 
+    width: 100%;
+    text-align: center;
+}
+
+label{
+    font-weight: bold;
+}
+
+.has-error{
+    border-color: #dc3545;
+}
+
+#snackbar {
+    visibility: hidden;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 20px;
+    position: fixed;
+    z-index: 1;
+    width: 94%;
+    margin-left: 3.3%;
+    bottom: 40px; 
+}
+  
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+  
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 40px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 40px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 40px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 40px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+
+.message-email{
+    font-size: 15px;
+    color: #dc3545;
+    position: absolute;
+}
