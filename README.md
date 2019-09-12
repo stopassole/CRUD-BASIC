@@ -23,7 +23,7 @@ Realize na sequência:
 
 Start back-end => ecxecute classe Main.java
 
-Star front-end => abra o prompt dentro da pasta do projeto ...
+Start front-end => abra o prompt dentro da pasta do projeto ...
 execute 'npm install', execute 'ng-serve'
 
 
