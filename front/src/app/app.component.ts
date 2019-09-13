@@ -44,7 +44,10 @@ export class AppComponent implements OnInit {
 
               for (let i = 0; i < this.funcionarios.length; i++) {
                 const funcionario = this.funcionarios[i];
-                if (funcionario.nome.toUpperCase().includes(string.toUpperCase())) {
+                if (funcionario.nome.toUpperCase().includes(string.toUpperCase()) ||
+                  funcionario.sobrenome.toUpperCase().includes(string.toUpperCase()) ||
+                  funcionario.email.toUpperCase().includes(string.toUpperCase()) ||
+                  String(funcionario.nis).toUpperCase().includes(string.toUpperCase())) {
                 } else {
                   this.funcionarios.splice(i, 1);
                   i--;
