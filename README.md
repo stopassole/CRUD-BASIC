@@ -1,5 +1,7 @@
 CRUD BÁSICO
 
+Video Demonstrativo: https://drive.google.com/file/d/1j0amnXBIzEazURQHMDLpIIvvp68JByDu/view?usp=sharing
+
 Desenvolvido em Angular e Java Spring.
 
 O banco de dados é criado na primeira requisição realizada pelo Front.
@@ -20,6 +22,6 @@ Angular: Download Node.js, https://cli.angular.io/...
 
 Realize na sequência:
 
-Start back-end => ecxecute classe Main.java
+Start back-end => execute classe Main.java
 
 Start front-end => abra o prompt dentro da pasta do projeto ... execute 'npm install', execute 'ng-serve'
